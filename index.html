@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Page1 · Inicio</title>
+    <title>Inicio · Práctica 01</title>
     <style>
         /* ===== RESET & BASE ===== */
         *,
@@ -225,6 +225,11 @@
 
         /* ===== TARJETA CON GIRO 3D ===== */
         .card-wrapper {
+            display: block;
+            width: 100%;
+            text-decoration: none;
+            color: inherit;
+            border-radius: 24px;
             perspective: 1200px;
             height: 220px;
             cursor: pointer;
@@ -240,9 +245,10 @@
             box-shadow: 0 6px 24px rgba(0, 20, 40, 0.06);
         }
 
-        /* Giro de 180° sobre el eje horizontal (X) + incluye el eje vertical (Y) */
-        .card-wrapper:hover .card-inner {
-            transform: rotateX(180deg) rotateY(180deg);
+        /* Giro de 180° sobre un eje que combina X e Y. */
+        .card-wrapper:hover .card-inner,
+        .card-wrapper:focus-visible .card-inner {
+            transform: rotate3d(1, 1, 0, 180deg);
         }
 
         .card-face {
@@ -306,7 +312,7 @@
         .card-back {
             background: #0b1e33;
             color: #ffffff;
-            transform: rotateX(180deg) rotateY(180deg);
+            transform: rotate3d(1, 1, 0, 180deg);
             border: 1.5px solid #1a3452;
             box-shadow: 0 8px 28px rgba(11, 30, 51, 0.12);
         }
@@ -464,6 +470,8 @@
             }
         }
 
+        .card-wrapper:focus-visible { outline: 3px solid #2563eb; outline-offset: 5px; }
+
         /* ===== ANIMACIÓN DE ENTRADA SUTIL ===== */
         .container {
             animation: fadeUp 0.6s ease-out both;
@@ -503,6 +511,9 @@
                 transform: translateY(0) scale(1);
             }
         }
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after { animation: none !important; transition: none !important; }
+        }
     </style>
 </head>
 <body>
@@ -512,7 +523,7 @@
         <!-- ===== HEADER ===== -->
         <header class="page-header">
             <h1>
-                📄 Page1
+                📄 Página principal
                 <span>index</span>
             </h1>
             <div class="sub">✦ Inicio · autenticación</div>
@@ -533,6 +544,7 @@
                         <input
                         type="email"
                         id="email"
+                        autocomplete="username"
                         placeholder="tu@correo.com"
                         required
                         />
@@ -544,17 +556,19 @@
                         <input
                         type="password"
                         id="password"
-                        placeholder="Enter your password"
+                        placeholder="Ingresa tu contraseña"
+                        autocomplete="current-password"
                         required
                         />
-                        <span class="error-hint">Campo requerido</span>
+
                     </div>
 
                     <!-- Botón -->
                     <div class="form-group" style="flex: 0 0 auto; margin-bottom: 0;">
-                        <button type="submit" class="btn-signin">INICIAR SESION</button>
+                        <button type="submit" class="btn-signin">INICIAR SESIÓN</button>
                     </div>
                 </div>
+                <p id="auth-status" role="status" style="margin-top: 16px; color: #3d526b;"></p>
             </form>
         </section>
 
@@ -568,115 +582,80 @@
             <div class="cards-grid">
 
                 <!-- CARD 1 → page1.html -->
-                <div class="card-wrapper">
+                <a class="card-wrapper" href="page1.html" aria-label="Abrir page1: Formulario">
                     <div class="card-inner">
                         <!-- FRONT -->
                         <div class="card-face card-front">
                             <div class="card-icon">📄</div>
-                            <h3>Page1</h3>
-                            <div class="card-sub">Inicio</div>
-                            <div class="card-hint">↻ pasa el cursor</div>
+                            <h3>page1</h3>
+                            <div class="card-sub">Formulario</div>
+                            <div class="card-hint">↻ pasa el cursor · clic para abrir</div>
                         </div>
                         <!-- BACK -->
                         <div class="card-face card-back">
                             <div class="back-icon">🚀</div>
-                            <h4>Page1</h4>
-                            <p>Ir a la página principal</p>
-                            <a href="page01.html" class="btn-link">Visitar →</a>
+                            <h4>page1</h4>
+                            <p>Formulario</p>
+                            <span class="btn-link">Visitar →</span>
                         </div>
                     </div>
-                </div>
+                </a>
 
                 <!-- CARD 2 → page2.html -->
-                <div class="card-wrapper">
+                <a class="card-wrapper" href="page2.html" aria-label="Abrir page2: Envío y color RGB">
                     <div class="card-inner">
                         <!-- FRONT -->
                         <div class="card-face card-front">
                             <div class="card-icon">📑</div>
-                            <h3>Page2</h3>
-                            <div class="card-sub">Secundaria</div>
-                            <div class="card-hint">↻ pasa el cursor</div>
+                            <h3>page2</h3>
+                            <div class="card-sub">Envío y color RGB</div>
+                            <div class="card-hint">↻ pasa el cursor · clic para abrir</div>
                         </div>
                         <!-- BACK -->
                         <div class="card-face card-back">
                             <div class="back-icon">📌</div>
-                            <h4>Page2</h4>
-                            <p>Ir a la página secundaria</p>
-                            <a href="page02.html" class="btn-link">Visitar →</a>
+                            <h4>page2</h4>
+                            <p>Envío y color RGB</p>
+                            <span class="btn-link">Visitar →</span>
                         </div>
                     </div>
-                </div>
+                </a>
 
                 <!-- CARD 3 → page3.html -->
-                <div class="card-wrapper">
+                <a class="card-wrapper" href="page3.html" aria-label="Abrir page3: Galería responsiva">
                     <div class="card-inner">
                         <!-- FRONT -->
                         <div class="card-face card-front">
                             <div class="card-icon">📊</div>
-                            <h3>Page3</h3>
-                            <div class="card-sub">Terciaria</div>
-                            <div class="card-hint">↻ pasa el cursor</div>
+                            <h3>page3</h3>
+                            <div class="card-sub">Galería responsiva</div>
+                            <div class="card-hint">↻ pasa el cursor · clic para abrir</div>
                         </div>
                         <!-- BACK -->
                         <div class="card-face card-back">
                             <div class="back-icon">🎯</div>
-                            <h4>Page3</h4>
-                            <p>Ir a la página terciaria</p>
-                            <a href="page03.html" class="btn-link">Visitar →</a>
+                            <h4>page3</h4>
+                            <p>Galería responsiva</p>
+                            <span class="btn-link">Visitar →</span>
                         </div>
                     </div>
-                </div>
+                </a>
 
             </div>
         </section>
 
     </div>
 
-    <!-- ===== INTERACCIÓN BÁSICA: ALERTA EN ENVÍO ===== -->
     <script>
-        (function() {
-            const form = document.getElementById('authForm');
-            const emailInput = document.getElementById('email');
-            const passInput = document.getElementById('password');
-
-            form.addEventListener('submit', function(e) {
-                e.preventDefault();
-
-                // Validación simple
-                const email = emailInput.value.trim();
-                const pass = passInput.value.trim();
-
-                if (!email || !pass) {
-                    alert('⚠️ Por favor, completa todos los campos.\n"Field is required"');
-                    return;
-                }
-
-                // Simulación de autenticación
-                alert('✅ Autenticación exitosa (simulada)\n\n' +
-                    'Email: ' + email + '\n' +
-                    'Password: ' + '•'.repeat(pass.length) + '\n\n' +
-                    '(Esto es una demo — los datos no se envían a ningún servidor.)'
-                );
-
-                // Reset opcional
-                // form.reset();
-            });
-
-            // Feedback visual: al escribir, ocultar el mensaje de error
-            [emailInput, passInput].forEach(input => {
-                input.addEventListener('input', function() {
-                    const hint = this.closest('.form-group').querySelector('.error-hint');
-                    if (hint) {
-                        if (this.value.trim() !== '') {
-                            hint.style.opacity = '0.3';
-                            hint.style.transition = 'opacity 0.3s';
-                        } else {
-                            hint.style.opacity = '1';
-                        }
-                    }
-                });
-            });
-        })();
+        // La práctica no incluye un servidor de autenticación.
+        document.getElementById('authForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            document.getElementById('auth-status').textContent =
+                'Campos validados. Este formulario es de demostración; no se ha iniciado una sesión ni enviado tus datos.';
+        });
+        document.getElementById('authForm').addEventListener('input', function() {
+            document.getElementById('auth-status').textContent = '';
+        });
     </script>
 
 </body>
