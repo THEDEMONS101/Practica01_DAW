@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Page02 · Envío y color RGB</title>
+  <link rel="stylesheet" href="css/page02.css">
+  <script src="js/page02.js" defer></script>
+</head>
+<body>
+  <main>
+    <h1 class="sr-only">Selección de envío y mezclador de color RGB</h1>
+    <section class="window" aria-label="Selección de envío" lang="en">
+      <div class="toolbar" aria-label="Iconos de la ventana">
+        <svg viewBox="0 0 24 24" role="img" aria-label="Brightness"><circle cx="12" cy="12" r="4" fill="currentColor"/><path d="M12 2v2m0 16v2M2 12h2m16 0h2M5 5l1.5 1.5m11 11L19 19M5 19l1.5-1.5m11-11L19 5"/></svg>
+        <svg viewBox="0 0 24 24" role="img" aria-label="Design"><path d="m3 5 7 14 4-7h-4l3-7H3Zm12 0h6l-5 9-2-4" fill="currentColor" stroke="none"/></svg>
+        <svg viewBox="0 0 24 24" role="img" aria-label="Clipboard"><path d="M8 5H5v16h13v-3M10 4h-2v13h13V4h-5"/><rect x="10" y="2" width="6" height="5" rx="1"/></svg>
+        <svg viewBox="0 0 24 24" role="img" aria-label="Code"><path d="m8 7-5 5 5 5m8-10 5 5-5 5"/></svg>
+      </div>
+      <div class="wizard">
+        <input class="step-input" type="radio" name="step" id="step-review" aria-label="Review Order">
+        <input class="step-input" type="radio" name="step" id="step-shipping" aria-label="Select Shipping" checked>
+        <input class="step-input" type="radio" name="step" id="step-submit" aria-label="Submit">
+        <nav class="steps" aria-label="Order steps">
+          <label for="step-review"><span class="step-number">1</span><span>Review Order</span></label>
+          <span class="connector" aria-hidden="true"></span>
+          <label for="step-shipping"><span class="step-number">2</span><span>Select Shipping</span></label>
+          <span class="connector" aria-hidden="true"></span>
+          <label for="step-submit"><span class="step-number">3</span><span>Submit</span></label>
+        </nav>
+        <section class="panel review-panel" aria-labelledby="review-title">
+          <h2 id="review-title">Review Order</h2>
+          <p>Review your order before choosing a delivery method.</p>
+          <p>This is a practice order. No payment is required.</p>
+          <div class="actions actions-end"><label class="next" for="step-shipping">Next</label></div>
+        </section>
+        <section class="panel shipping-panel" aria-labelledby="shipping-title">
+          <h2 id="shipping-title">Shipping</h2>
+          <fieldset>
+            <legend>Delivery Method</legend>
+            <label class="delivery"><input type="radio" name="delivery" value="standard">Standard Shipping</label>
+            <label class="delivery"><input type="radio" name="delivery" value="priority">Priority Shipping</label>
+            <label class="delivery"><input type="radio" name="delivery" value="express">Express Shipping</label>
+          </fieldset>
+          <div class="actions"><label for="step-review">Previous</label><label class="next" for="step-submit">Next</label></div>
+        </section>
+        <section class="panel submit-panel" aria-labelledby="submit-title">
+          <h2 id="submit-title">Submit</h2>
+          <p>Your order is ready for review.</p>
+          <p>This demonstration does not send an order or store personal information.</p>
+          <div class="actions"><label for="step-shipping">Previous</label></div>
+        </section>
+      </div>
+    </section>
+
+    <section class="color-card" aria-label="Mezclador de color RGB">
+      <div class="color-preview" role="img" aria-label="Color RGB: 80, 165, 92"></div>
+      <div class="color-controls">
+        <div class="color-row">
+          <label for="red-range">R</label>
+          <input id="red-range" type="range" min="0" max="255" value="80" aria-label="Rojo" data-channel="red">
+          <input id="red-number" type="number" min="0" max="255" step="1" value="80" aria-label="Valor rojo" data-channel="red">
+        </div>
+        <div class="color-row">
+          <label for="green-range">G</label>
+          <input id="green-range" type="range" min="0" max="255" value="165" aria-label="Verde" data-channel="green">
+          <input id="green-number" type="number" min="0" max="255" step="1" value="165" aria-label="Valor verde" data-channel="green">
+        </div>
+        <div class="color-row">
+          <label for="blue-range">B</label>
+          <input id="blue-range" type="range" min="0" max="255" value="92" aria-label="Azul" data-channel="blue">
+          <input id="blue-number" type="number" min="0" max="255" step="1" value="92" aria-label="Valor azul" data-channel="blue">
+        </div>
+        <output class="sr-only" id="rgb-value" aria-live="polite">rgb(80, 165, 92)</output>
+      </div>
+    </section>
+    <noscript><p class="notice">Activa JavaScript para actualizar el color con los controles RGB.</p></noscript>
+  </main>
+</body>
+</html>
