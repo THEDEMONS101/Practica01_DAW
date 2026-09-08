@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Page 03 - Punto 4</title>
+    <style>
+        /* ===== RESET Y ESTILOS BASE ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f0f4f8;
+            color: #1e293b;
+            line-height: 1.6;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1300px;
+            margin: 0 auto;
+            background: #ffffff;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+        }
+
+        /* ===== ENCABEZADO ===== */
+        header {
+            background: linear-gradient(135deg, #0b3b5c, #1b6b8f);
+            color: white;
+            padding: 40px 30px;
+            border-radius: 16px;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            margin-top: 8px;
+        }
+
+        /* ===== SECCIÓN DE TEXTO ===== */
+        .text-section {
+            background: #e6f0fa;
+            padding: 25px 30px;
+            border-radius: 16px;
+            margin-bottom: 35px;
+            border-left: 6px solid #0b3b5c;
+        }
+
+        .text-section h2 {
+            color: #0b3b5c;
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+        }
+
+        .text-section p {
+            font-size: 1.1rem;
+            color: #1e293b;
+        }
+
+        /* ===== GALERÍA DE IMÁGENES (FLEX) ===== */
+        .gallery {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 25px;
+            justify-content: center;
+            margin-bottom: 40px;
+        }
+
+        .gallery-item {
+            flex: 1 1 220px;
+            max-width: 280px;
+            background: #f8fafc;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.15);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            display: block;
+            /* ---------- REQUISITO: OPACIDAD AL HOVER (10% más) ---------- */
+            opacity: 0.85;
+            transition: opacity 0.3s ease;
+        }
+
+        /* Al pasar el mouse, la opacidad aumenta un 10% (de 0.85 a 0.95) */
+        .gallery-item img:hover {
+            opacity: 0.95;
+        }
+
+        .gallery-item .caption {
+            padding: 14px 16px;
+            background: white;
+            text-align: center;
+            font-weight: 600;
+            color: #0b3b5c;
+        }
+
+        /* ===== PIE DE PÁGINA ===== */
+        footer {
+            background: #0b3b5c;
+            color: white;
+            padding: 20px 30px;
+            border-radius: 16px;
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        footer p {
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+
+        /* ============================================= */
+        /* ===== MEDIA QUERIES (RESPONSIVE) ===== */
+        /* ============================================= */
+
+        /* --- PEQUEÑO: < 480px --- */
+        @media (max-width: 479px) {
+            body {
+                padding: 10px;
+            }
+
+            .container {
+                padding: 16px;
+            }
+
+            header h1 {
+                font-size: 1.8rem;
+            }
+
+            header p {
+                font-size: 1rem;
+            }
+
+            .text-section h2 {
+                font-size: 1.4rem;
+            }
+
+            .text-section p {
+                font-size: 1rem;
+            }
+
+            .gallery-item {
+                flex: 1 1 100%;
+                max-width: 100%;
+            }
+
+            .gallery-item img {
+                height: 160px;
+            }
+        }
+
+        /* --- MEDIANO: < 900px --- */
+        @media (max-width: 899px) and (min-width: 480px) {
+            .gallery-item {
+                flex: 1 1 180px;
+                max-width: 220px;
+            }
+
+            .gallery-item img {
+                height: 150px;
+            }
+
+            header h1 {
+                font-size: 2.2rem;
+            }
+        }
+
+        /* --- GRANDE: < 1200px --- */
+        @media (max-width: 1199px) and (min-width: 900px) {
+            .gallery-item {
+                flex: 1 1 200px;
+                max-width: 250px;
+            }
+
+            .gallery-item img {
+                height: 170px;
+            }
+        }
+
+        /* --- EXTRA: > 1200px (estilos por defecto ya aplican) --- */
+        @media (min-width: 1200px) {
+            .gallery-item {
+                flex: 1 1 240px;
+                max-width: 280px;
+            }
+
+            .gallery-item img {
+                height: 200px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+
+        <!-- ENCABEZADO -->
+        <header>
+            <h1>🌍 Punto 4 - Galería</h1>
+            <p>Diseño responsivo con Flexbox y efectos hover</p>
+        </header>
+
+        <!-- SECCIÓN DE TEXTO -->
+        <section class="text-section">
+            <h2>Bienvenido a nuestra galería</h2>
+            <p>
+                Esta página demuestra el uso de <strong>HTML y CSS puro</strong> con 
+                <strong>Flexbox</strong> y <strong>media queries</strong> para 4 tamaños 
+                de pantalla. Además, cada imagen tiene un efecto de <strong>opacidad 
+                del 10% más</strong> al pasar el mouse.
+            </p>
+        </section>
+
+        <!-- GALERÍA DE IMÁGENES -->
+        <div class="gallery">
+
+            <!-- Imagen 1 (SVG de ejemplo) -->
+            <div class="gallery-item">
+                <img src="https://picsum.photos/seed/1/400/300" alt="Imagen 1" />
+                <div class="caption">🌄 Paisaje 1</div>
+            </div>
+
+            <!-- Imagen 2 -->
+            <div class="gallery-item">
+                <img src="https://picsum.photos/seed/2/400/300" alt="Imagen 2" />
+                <div class="caption">🏔️ Paisaje 2</div>
+            </div>
+
+            <!-- Imagen 3 -->
+            <div class="gallery-item">
+                <img src="https://picsum.photos/seed/3/400/300" alt="Imagen 3" />
+                <div class="caption">🌅 Paisaje 3</div>
+            </div>
+
+            <!-- Imagen 4 -->
+            <div class="gallery-item">
+                <img src="https://picsum.photos/seed/4/400/300" alt="Imagen 4" />
+                <div class="caption">🌿 Naturaleza 4</div>
+            </div>
+
+            <!-- Imagen 5 -->
+            <div class="gallery-item">
+                <img src="https://picsum.photos/seed/5/400/300" alt="Imagen 5" />
+                <div class="caption">🏙️ Ciudad 5</div>
+            </div>
+
+            <!-- Imagen 6 -->
+            <div class="gallery-item">
+                <img src="https://picsum.photos/seed/6/400/300" alt="Imagen 6" />
+                <div class="caption">🌌 Noche 6</div>
+            </div>
+
+        </div>
+
+        <!-- PIE DE PÁGINA -->
+        <footer>
+            <p>© 2026 - Desarrollo de Aplicaciones Web | Práctica Calificada 1</p>
+        </footer>
+
+    </div>
+
+</body>
+</html>
